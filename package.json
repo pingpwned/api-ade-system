@@ -1,0 +1,55 @@
+{
+  "name": "HTTPRequester",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "axios": "^0.18.0",
+    "electron-installer-debian": "^1.2.0",
+    "electron-packager": "^13.1.0",
+    "foreman": "^3.0.1",
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3",
+    "react-json-view": "^1.19.1",
+    "react-scripts": "^3.4.0",
+    "react-split-pane": "^0.1.85"
+  },
+  "devDependencies": {
+    "electron": "^4.0.6",
+    "electron-builder": "^20.38.5",
+    "electron-installer-dmg": "^2.0.0",
+    "electron-winstaller": "^4.0.0"
+  },
+  "scripts": {
+    "dev": "nf start",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "build-win": "yarn run build && electron-packager . --overwrite --asar=true --platform=win32 --arch=x64 --icon=icons/icon-DS.ico --prune=true --out=release-builds",
+    "ci-win": "node installers/createWinInstaller.js",
+    "build-mac": "yarn run build && electron-packager . --overwrite --platform=darwin --arch=x64 --icon=icons/icon-DS.icns --prune=true --out=release-builds",
+    "ci-mac": "electron-installer-dmg ./release-builds/elclient-darwin-x64/elclient.app dm-requester --out=release-builds/installers --overwrite --icon=icons/icon-DS.icns",
+    "build-linux": "npm run build && electron-packager . HTTPRequester --overwrite --asar=true --platform=linux --arch=x64 --icon=icons/icon-DS.png --prune=true --out=release-builds",
+    "ci-linux": "electron-installer-debian --src release-builds/HTTPRequester-linux-x64/ --arch amd64 --config debian.json"
+  },
+  "description": "Electron react client",
+  "homepage": "./",
+  "main": "electron/main.js",
+  "build": {
+    "productName": "fucking awesome app",
+    "electronVersion": "1.7.10",
+    "files": [
+      "build/**/*",
+      "electron/*"
+    ]
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
