@@ -14,7 +14,7 @@
     "react-split-pane": "^0.1.85"
   },
   "devDependencies": {
-    "electron": "^4.0.6",
+    "electron": "^15.5.5",
     "electron-builder": "^20.38.5",
     "electron-installer-dmg": "^2.0.0",
     "electron-winstaller": "^4.0.0"
